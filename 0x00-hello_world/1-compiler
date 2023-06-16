@@ -1,2 +1,2 @@
 #!/bin/bash
-   cpp $CFILE > c  1-compiler.o 
+gcc -c $CFILE
