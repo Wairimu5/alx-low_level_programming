@@ -1,2 +1,2 @@
 #!/bin/bash
-   cpp $CFILE > o  1-compiler.o 
+   cpp $CFILE > c  1-compiler.o 
