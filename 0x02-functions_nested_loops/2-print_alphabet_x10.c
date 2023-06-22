@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 
 void print_alphabet_x10(void) 
 {
@@ -8,9 +8,8 @@ void print_alphabet_x10(void)
     {
         for (j = 0; j < 26; j++) 
 	{
-            _putchar('a' + j);
+            putchar('a' + j);
         }
-        _putchar('\n');
+        putchar('\n');
     }
 }
-
