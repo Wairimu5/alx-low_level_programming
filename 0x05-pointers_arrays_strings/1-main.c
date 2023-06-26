@@ -1,20 +1,14 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
 int main(void)
 {
-    int a;
-    int b;
+    int a = 10;
+    int b = 20;
 
-    a = 98;
-    b = 42;
-    printf("a=%d, b=%d\n", a, b);
-    swap_int(&a, &b);
-    printf("a=%d, b=%d\n", a, b);
-    return (0);
+    printf("Before swap: a = %d, b = %d\n", a, b);
+    swap_integers(&a, &b);
+    printf("After swap: a = %d, b = %d\n", a, b);
+
+    return 0;
 }
