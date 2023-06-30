@@ -15,7 +15,7 @@ int main(void)
 
     while (i < 10)
     {
-        putchar('0' + i);  // Convert i to character
+        putchar(i)
         i++;
     }
 
