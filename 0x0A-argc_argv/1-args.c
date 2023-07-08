@@ -9,7 +9,11 @@
  */
 int main(int argc, char *argv[])
 {
-	int count = argc - 1;
+	int count;
+
+	(void) argv; /* Indicates that the parameter is unused */
+
+	count = argc - 1;
 
 	printf("%d\n", count);
 
