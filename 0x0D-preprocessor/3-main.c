@@ -1,19 +1,12 @@
 #include <stdio.h>
 #include "3-function_like_macro.h"
-#include "3-function_like_macro.h"
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
 int main(void)
 {
-    int i;
-    int j;
+    int num = -5;
+    int absValue = ABS(num);
 
-    i = ABS(-98) * 10;
-    j = ABS(98) * 10;
-    printf("%d, %d\n", i, j);
+    printf("The absolute value of %d is %d\n", num, absValue);
+
     return (0);
 }
