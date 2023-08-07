@@ -20,8 +20,12 @@ void print_binary(unsigned long int n)
             count++;
         }
         else if (count)
+        {
             putchar('0');
+        }
     }
     if (!count)
+    {
         putchar('0');
+    }
 }
