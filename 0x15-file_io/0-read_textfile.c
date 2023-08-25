@@ -1,69 +1,49 @@
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
-#include "main.h"
-
 
 /**
- * _strlen - set the integer to 402
- * @s: a pointer the integer we want to set to 98
- *
- * Return: nothing
- */
-size_t _strlen(char *s)
+  *read_textfile - Read file and prints it to stdout
+  *@filename: The name of the file to read from
+  *@letter: The numver of letters it should read and print
+  *
+  *Return: A fd if success, but -1 if it fails
+  */
+
+ssize_t read_textfile(const char *filename, size_t letter)
 {
-	int len;
-	int i;
+	ssize_t n_read, n_write;
+	int fd;
+	char *str;
 
-	len = 0;
-	i = 0;
-	while (*(s + i) != '\0')
-	{
-		len++;
-		i++;
-	}
-	return (len);
-}
-
-
-/**
- * read_textfile - set the integer to 402
- * @filename: a pointer the integer we want to set to 98
- * @letters : number of letters to be printed and read
- * Return: the number of letters it could read and print
- */
-
-size_t read_textfile(const char *filename, size_t letters)
-{
-	int fd, check;
-	char *file_content;
-
-	if (filename == NULL)
+	if (filename == NULL || filename[0] == '\0')
 		return (0);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	file_content = malloc(sizeof(char) * (letters + 1));
-	if (file_content == NULL)
+	str = malloc(sizeof(char) * letter);
+	if (str == NULL)
 	{
+		free(str);
 		close(fd);
 		return (0);
 	}
-	check = read(fd, file_content, letters);
-	if (check == -1)
+	n_read = read(fd, str, letter);
+	if (n_read < 0)
 	{
 		close(fd);
+		free(str);
 		return (0);
 	}
-	*(file_content + letters) = '\0';
-	if (letters > _strlen(file_content))
-		check = write(STDOUT_FILENO, file_content, _strlen(file_content));
-	else
-		check = write(STDOUT_FILENO, file_content, letters);
-	if (check == -1)
+	n_write = write(STDOUT_FILENO, str, n_read);
+	if (n_write < n_read)
 	{
 		close(fd);
+		free(str);
 		return (0);
 	}
+	free(str);
 	close(fd);
-	return (check);
+	return (n_read);
 }
